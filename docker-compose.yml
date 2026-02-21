@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: sm-postgres
+    environment:
+      POSTGRES_USER: sm
+      POSTGRES_PASSWORD: sm
+      POSTGRES_DB: sm_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - sm_postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: sm-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  sm_postgres_data:
